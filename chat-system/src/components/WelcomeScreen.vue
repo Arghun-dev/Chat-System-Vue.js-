@@ -6,6 +6,7 @@
         <div class="form-group">
           <small for="name">Enter Your Name:</small>
           <input type="text" class="form-control" id="name" aria-describedby="name" v-model='name'>
+          <p v-if='feedback'>{{ feedback }}</p>
           <button type="submit" class="btn button text-uppercase">Enter Chat</button>
       </div>
       </form>
@@ -18,13 +19,19 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      name: null
+      name: null,
+      feedback: null
     }
   },
 
   methods: {
     enterChat(){
-      console.log(this.name)
+      if(this.name) {
+        this.$router.push({ name: 'Chat' })
+        this.feedback = null
+      } else {
+        this.feedback = 'You must enter a name to join'
+      }
     }
   }
 }
@@ -55,6 +62,11 @@ button {
   color: white;
   margin-top: 8%;
   margin-left: 25%;
+}
+
+p {
+  color: red;
+  text-align: center;
 }
 
 </style>
