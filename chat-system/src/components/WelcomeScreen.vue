@@ -2,10 +2,10 @@
   <div class="welcome">
     <div class="box">
       <h1 class="display-2">Welcome</h1>
-      <form class="mt-3">
+      <form class="mt-3" @submit.prevent="enterChat">
         <div class="form-group">
           <small for="name">Enter Your Name:</small>
-          <input type="text" class="form-control" id="name" aria-describedby="name">
+          <input type="text" class="form-control" id="name" aria-describedby="name" v-model='name'>
           <button type="submit" class="btn button text-uppercase">Enter Chat</button>
       </div>
       </form>
@@ -18,7 +18,13 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      
+      name: null
+    }
+  },
+
+  methods: {
+    enterChat(){
+      console.log(this.name)
     }
   }
 }
