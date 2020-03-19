@@ -4,16 +4,21 @@
             <div class="card-header">time</div>
             <div class="card-body text-info">
                 <h5 class="card-title">{{ name }}</h5>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <NewMessage :name="name" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import NewMessage from './NewMessage'
+
 export default {
     name: 'Chat',
     props: ['name'],
+    components: {
+        NewMessage
+    },
     data() {
         return {
 
